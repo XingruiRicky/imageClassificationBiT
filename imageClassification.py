@@ -15,15 +15,15 @@ img_size = 224
 batch_size = 32
 
 # enhanced training data by ...
-# train_datagen = ImageDataGenerator(preprocessing_function=preprocess_input,
-#                                    rotation_range=30,
-#                                    width_shift_range=0.2,
-#                                    height_shift_range=0.2,
-#                                    shear_range=0.2,
-#                                    zoom_range=0.2,
-#                                    horizontal_flip=True,
-#                                    fill_mode='nearest')
-train_datagen = ImageDataGenerator(preprocessing_function=preprocess_input)
+train_datagen = ImageDataGenerator(preprocessing_function=preprocess_input,
+                                   rotation_range=30,
+                                   width_shift_range=0.2,
+                                   height_shift_range=0.2,
+                                   shear_range=0.2,
+                                   zoom_range=0.2,
+                                   horizontal_flip=True,
+                                   fill_mode='nearest')
+# train_datagen = ImageDataGenerator(preprocessing_function=preprocess_input)
 val_datagen = ImageDataGenerator(preprocessing_function=preprocess_input)
 test_datagen = ImageDataGenerator(preprocessing_function=preprocess_input)
 
@@ -66,7 +66,7 @@ model.compile(optimizer=Adam(learning_rate=1e-4),
               metrics=['accuracy'])
 
 # 训练模型
-epochs = 5  # 根据需要调整
+epochs = 10  # 根据需要调整
 history = model.fit(train_generator,
                     epochs=epochs,
                     validation_data=val_generator)
