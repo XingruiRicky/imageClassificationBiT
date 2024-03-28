@@ -2,4 +2,4 @@
 Image Classification using BiT
 
 Dataset: 
-  Dog Breed Classification: https://www.kaggle.com/datasets/venktesh/person-images
+  BIRDS 20 SPECIES- IMAGE CLASSIFICATION:https://www.kaggle.com/datasets/umairshahpirzada/birds-20-species-image-classification
