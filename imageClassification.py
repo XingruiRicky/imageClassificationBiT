@@ -5,6 +5,7 @@ from tensorflow.keras.layers import Input, GlobalAveragePooling2D, Dense
 from tensorflow.keras.models import Model
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.applications.convnext import ConvNeXtTiny, preprocess_input
+import matplotlib.pyplot as plt
 
 # path to data
 train_dir = 'dataset/train'
@@ -70,7 +71,20 @@ epochs = 10  # 根据需要调整
 history = model.fit(train_generator,
                     epochs=epochs,
                     validation_data=val_generator)
+acc = history.history['accuracy']
+val_acc = history.history['val_accuracy']
+epochs = range(1, len(acc) + 1)
 
+plt.figure(figsize=(12, 6))
+plt.plot(epochs, acc, 'b', label='Training accuracy')
+plt.plot(epochs, val_acc, 'r', label='Validation accuracy')
+plt.title('Training and Validation Accuracy')
+plt.xlabel('Epochs')
+plt.ylabel('Accuracy')
+plt.legend()
+plt.show()
+
+model.save('model.h5')
 # 评估模型
 test_loss, test_accuracy = model.evaluate(test_generator)
 print(f"Test Accuracy: {test_accuracy}")
